@@ -1,0 +1,64 @@
+// MongoDB Playground
+
+// Select the database to use.
+use('Northwind');
+
+// queries()
+
+
+//1. Mostrar los productos con un precio unitario mayor a 12 dls
+db.products.find(
+  {
+    UnitPrice:
+    {
+        $gt:12
+    }
+  }
+)
+
+// Mostrar los productos con un precio unitario menor a 36 dls
+db.products.find(
+  {
+    UnitPrice:
+    {
+        $lt:36
+    }
+  }
+).pretty()
+
+//Mostrar los productos con un precio mayor o igual a 20 dls
+
+db.products.find(
+  {
+    UnitPrice:
+    {
+        $gte:20
+    }
+  }
+).pretty()
+
+//4. Mostrar los productos con un precio menor o igual a 42 dls
+
+db.products.find(
+  {
+    UnitPrice:
+    {
+        $lte:42
+    }
+  }
+).pretty()
+
+//Mostrar a los productos de la categoría 7
+db.products.find({CategoryID: 7}).pretty()
+
+//8. Mostrar las ordenes del cliente BLONP
+db.orders.find({CustomerID: "BLONP"}).pretty()
+
+db.orders.find({CustomerID: "BLONP"}).count()
+
+//Mostrar las ordenes que hayan sido enviadas a la ciudad Oulu
+db.orders.find({ShipCity:"Oulu"}).pretty()
+
+//0.Mostrar las ordenes que hayan sido enviadas al país USA
+db.orders.find({ShipCountry:"USA"}).pretty()
+db.orders.find({ShipCountry:"USA"}).count()
