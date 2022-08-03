@@ -62,3 +62,36 @@ db.orders.find({ShipCity:"Oulu"}).pretty()
 //0.Mostrar las ordenes que hayan sido enviadas al país USA
 db.orders.find({ShipCountry:"USA"}).pretty()
 db.orders.find({ShipCountry:"USA"}).count()
+
+//Mostrar los productos que tengan entre 13 y 49 unidades
+db.products.find(
+  {
+    UnitsInStock:
+    {
+        $gte:13,$lte:49
+    }
+  }
+)
+
+//Mostrar a los productos que cuesten entre 9.2 y 123.79 dls
+
+db.products.find(
+  {
+    UnitPrice:
+    {
+        $gte:9.2,$lte:123.79
+    }
+  }
+).pretty()
+
+
+
+
+db.products.find(
+  {
+    UnitPrice:
+    {
+        $gte:9.2,$lte:123.79
+    }
+  }
+).count()
